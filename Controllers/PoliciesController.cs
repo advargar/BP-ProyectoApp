@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BP_Proyecto.Models;
 using Microsoft.IdentityModel.Tokens;
 using Igor.Gateway.Dtos.Policies;
+using Microsoft.CodeAnalysis.Elfie.Extensions;
 
 namespace BP_Proyecto.Controllers
 {
@@ -64,6 +65,19 @@ namespace BP_Proyecto.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(policy);
+        }
+
+        public async Task<IActionResult> Search(string buscar)
+        {
+            var policies = from Policy in _context.Policy
+                        select Policy;
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                policies = policies.Where(s => s.PolicyNumber!.Contains(buscar) || s.InsuranceCompany!.Contains(buscar));      
+            }
+
+            return View(await policies.ToListAsync());
         }
 
         // GET: Policies/Edit/5
@@ -148,31 +162,6 @@ namespace BP_Proyecto.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        [HttpGet("buscar")]
-        public async Task<IEnumerable<Policy>> SearchAsync(PolicyFiltroDto filtro)
-        {
-            var query = _context.Policy.Include(p => p.ClientId).AsQueryable();
-
-            if (!string.IsNullOrEmpty(filtro.PolicyNumber))
-                query = query.Where(p => p.PolicyNumber == filtro.PolicyNumber);
-
-            if (!string.IsNullOrEmpty(filtro.PolicyType))
-                query = query.Where(p => p.PolicyType == filtro.PolicyType);
-
-            if (!string.IsNullOrEmpty(filtro.InsureId))
-                query = query.Where(p => p.ClientId == filtro.InsureId);
-
-            if (!string.IsNullOrEmpty(filtro.Name))
-            {
-                query = query.Where(p =>
-                    p.ClientId.Contains(filtro.Name) ||
-                    p.ClientId.Contains(filtro.FirstSurname ?? string.Empty) || 
-                    p.ClientId.Contains(filtro.SecondSurname ?? string.Empty)); 
-            }
-
-            return await query.ToListAsync();
         }
 
         private bool PolicyExists(string id)
