@@ -290,3 +290,4 @@ C:\Users\ELI GARCIA\OneDrive\Documentos\Adrian\BP-Proyecto\BP-Proyecto\bin\Debug
 C:\Users\ELI GARCIA\OneDrive\Documentos\Adrian\BP-Proyecto\BP-Proyecto\bin\Debug\net8.0\Igor.Sdk.Common.dll
 C:\Users\ELI GARCIA\OneDrive\Documentos\Adrian\BP-Proyecto\BP-Proyecto\bin\Debug\net8.0\linq2db.dll
 C:\Users\ELI GARCIA\OneDrive\Documentos\Adrian\BP-Proyecto\BP-Proyecto\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\ELI GARCIA\OneDrive\Documentos\Adrian\BP-Proyecto\BP-Proyecto\obj\Debug\net8.0\BP-Proyecto.sourcelink.json
