@@ -1,0 +1,102 @@
+﻿@model BP_Proyecto.Models.Policy
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    Create
+</button>
+
+<h4>Polizas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PolicyNumber" class="control-label"></label>
+                <input asp-for="PolicyNumber" class="form-control" />
+                <span asp-validation-for="PolicyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-black">Tipo Poliza</label>
+                <select class="form-select" asp-for="PolicyType"  aria-label="Default select example">
+                    <option selected>Elegir</option>
+                    <option value="PROCESS">En Proceso</option>
+                    <option value="ACTIVE">Activa</option>
+                    <option value="NO ACTIVA">No Activada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverageAmount" class="control-label"></label>
+                <input asp-for="CoverageAmount" class="form-control" />
+                <span asp-validation-for="CoverageAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpirationDate" class="control-label"></label>
+                <input asp-for="ExpirationDate" class="form-control" />
+                <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IssueDate" class="control-label"></label>
+                <input asp-for="IssueDate" class="form-control" />
+                <span asp-validation-for="IssueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="text-black">Cobertura</label>
+                <select class="form-select" asp-for="Coverage" aria-label="Default select example">
+                    <option selected>Elegir</option>
+                    <option value="COMPLETE">Completa</option>
+                    <option value="MITAD">50% Porciento</option>
+                    <option value="MINIMA">Minima</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text-black">Estado Poliza</label>
+                <select class="form-select" asp-for="PolicyStatus" aria-label="Default select example">
+                    <option selected>Elegir</option>
+                    <option value="ACTIVE">Activa</option>
+                    <option value="INNACTIVE">Inactiva</option>
+                    <option value="PORVENCER">Por Vencer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Premium" class="control-label"></label>
+                <input asp-for="Premium" class="form-control" />
+                <span asp-validation-for="Premium" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyPeriod" class="control-label"></label>
+                <input asp-for="PolicyPeriod" class="form-control" />
+                <span asp-validation-for="PolicyPeriod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InclusionDate" class="control-label"></label>
+                <input asp-for="InclusionDate" class="form-control" />
+                <span asp-validation-for="InclusionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsuranceCompany" class="control-label"></label>
+                <input asp-for="InsuranceCompany" class="form-control" />
+                <span asp-validation-for="InsuranceCompany" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label"></label>
+                <input asp-for="ClientId" class="form-control" />
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
